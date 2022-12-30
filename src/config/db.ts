@@ -5,7 +5,7 @@ mongoose.set('strictQuery', true)
 function connectDB (){
     const dbUrl = process.env.DATABASE as string;
     return mongoose.connect(dbUrl, {
-        // useNewUrlParser: true as boolean,
+        // useNewUrlParser: true,
         // useUniFiedTopology: true as boolean
     }).then(() => console.info("database connected"))
         .catch((err: any) => {

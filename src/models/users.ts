@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-interface IUser{
-    name: string,
-    mobileNumber: number,
-    typeOfUsers:string
+export interface IUser{
+    name: string;
+    mobileNumber: number;
+    typeOfUsers: string;
 }
 
 const userSchema = new mongoose.Schema<IUser>({
@@ -15,3 +15,4 @@ const userSchema = new mongoose.Schema<IUser>({
 });
 
 const UserModel = mongoose.model<IUser>("user", userSchema);
+export default UserModel;
