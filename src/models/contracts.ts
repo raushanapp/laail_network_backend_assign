@@ -4,7 +4,7 @@ export interface IContract{
     borrowerId: Schema.Types.ObjectId;
     principle: number;
     interest: number;
-    loanStartDate: Date;
+    loanStartDate?: string;
     loanDueDate: string;
     isRepaid:string
 }
@@ -26,7 +26,7 @@ const contractSchema = new mongoose.Schema<IContract>({
         type: Number, required: true
     },
     loanStartDate: {
-        type: Date
+        type:  String, required: true
     },
     loanDueDate: {
         type: String, required: true

@@ -1,3 +1,4 @@
+import { type } from "os";
 import Contracts from "../models/contracts";
 import { Request, Response } from "express";
 
@@ -14,16 +15,22 @@ export const createContracts = async (req: Request, res: Response) => {
 };
 
 export const getContracts = async (req: Request, res: Response) => {
+    
+    const { sort }: any = req.query;
+    
+   
     try {
-        const users = await Contracts.find().populate({
-            path: "lenderId"||"borrowerId",
+        const users = await Contracts.find().sort(sort).populate({
+            path: "lenderId borrowerId",
             select: {
                 name: 1,
+                mobileNumber:1,
                 principle: 1,
                 interest:1,
                 loanStartDate: 1,
                 loanDueDate: 1,
-                isRepaid:1,
+                isRepaid: 1,
+                _id:0
 
             },
         }).lean().exec();
